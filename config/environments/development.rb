@@ -1,6 +1,6 @@
 Rails.application.configure do
 
-  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
+  # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
 
   # Settings specified here will take precedence over those in config/application.rb.
 
