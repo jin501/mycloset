@@ -5,7 +5,10 @@ class ClosetsController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @closet = current_user.closets.first
+  end
+
+  def edit
   end
 
 end
