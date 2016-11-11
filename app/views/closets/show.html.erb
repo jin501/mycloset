@@ -1,10 +1,11 @@
 Welcome to your closet, <%= current_user.email %>
 
 <br><br>
-MyCloset <%= link_to 'edit', edit_closet_path %> 
+MyCloset <%= link_to 'edit', edit_closet_path %> <%= link_to 'add item', new_item_path %>
+
 <br><br>
 
 <% @closet.items.each do |item| %>
 
-Type: <%= item.name %> | Brand: <%= item.designer %> |
+Type: <%= item.name %> | Brand: <%= item.designer %> | <%= link_to 'edit', edit_item_path %> | <%= link_to 'I wore this today' %>
 <% end %>

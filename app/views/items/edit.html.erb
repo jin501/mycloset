@@ -1,0 +1,15 @@
+Type: <%= @item.name  %><br>
+Brand: <%= @item.designer %>
+<br><br>
+
+<%= form_for @closet_item, url: update_item_path do |f| %>
+<%= f.hidden_field :item_id, value: @item.id %>
+  Last Worn: <%= f.text_field :last_worn %><br>
+  Status: <%= f.text_field :status %><br>
+  Quantity: <%= f.text_field :qauntity %><br>
+  Size: <%= f.text_field :size %><br>
+  Season: <%= f.text_field :season %><br>
+<%= f.submit %>
+<% end %>
+
+<%= link_to 'delete item', "/items/#{@item.id}/delete" %>

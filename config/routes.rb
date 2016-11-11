@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :user, only: [:show]
  delete '/logout', to: 'devise/sessions#destroy'
  resources :closets
+ resources :items
+ patch '/items/:id' => 'items#update', as: :update_item
+ 
  root 'welcome#home'
 
 end

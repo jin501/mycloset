@@ -1,0 +1,16 @@
+<%= form_for @item do |f| %>
+  Type: <%= f.text_field :name %> <br>
+  Brand: <%= f.text_field :designer %> <br>
+  Upload image
+
+  <br>
+
+  <%= f.fields_for :closet_items do |closet_item| %>
+    Quantity:<%= closet_item.text_field :qauntity %><br>
+    Notes:  <%= closet_item.text_field :note %> <br>
+
+
+  <% end %>
+  <!-- <%= link_to 'add item', @item %><br> -->
+  <%= f.submit %>
+<% end %>
