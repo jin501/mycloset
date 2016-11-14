@@ -1,4 +1,4 @@
-<%= form_for @item do |f| %>
+<%= form_for @item, :url => {:action => "update", :id => @item} do |f| %>
   <%= f.hidden_field :name, value: @item.name %>
   <%= f.hidden_field :designer, value: @item.designer %>
   Type: <%= @item.name %> <br>
@@ -6,12 +6,13 @@
   Upload image
   <br>
   <%= f.fields_for :closet_items_attributes do |closet_item| %>
-    Quantity: <%= closet_item.number_field :qauntity %><br>
-    Notes:  <%= closet_item.text_field :note %> <br>
-    Last Worn: <%= closet_item.text_field :last_worn %><br>
-    Status: <%= closet_item.text_field :status %><br>
-    Size: <%= closet_item.text_field :size %><br>
-    Season: <%= closet_item.text_field :season %><br>
+    Quantity: <%= closet_item.number_field :qauntity, value: @closet_item.qauntity %><br>
+    Bought:  <%= closet_item.text_field :bought, value: @closet_item.bought %> <br>
+    Last Worn: <%= closet_item.text_field :last_worn, value: @closet_item.last_worn %><br>
+    Status: <%= closet_item.text_field :status, value: @closet_item.status %><br>
+    Size: <%= closet_item.text_field :size, value: @closet_item.size %><br>
+    Season: <%= closet_item.text_field :season, value: @closet_item.season %><br><br>
+    Notes:  <%= closet_item.text_area :note, value: @closet_item.note %> <br>
     <% end %>
   <%= f.submit 'Update'%>
 <% end %>

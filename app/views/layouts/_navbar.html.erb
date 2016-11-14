@@ -1,5 +1,5 @@
 <% if current_user %>
-<%= link_to 'MyProfile', user_path(current_user) %> | <%= link_to 'MyCloset', closet_path(current_user.mycloset) %> | sign out/sign in | search
+<%= link_to 'MyProfile', user_path(current_user) %> | <%= link_to 'MyCloset', closet_path(current_user.mycloset) %> | <%= link_to 'Log out', destroy_user_session_path %> | search
 <br><br>
 
 <% end %>

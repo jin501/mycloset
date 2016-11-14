@@ -12,8 +12,8 @@ class ItemsController < ApplicationController
   def update
     @closet_item = ClosetItem.find_or_create_by(closet_id: params[:closet_id], item_id: params[:id])
     @closet_item.update(item_params[:closet_items_attributes])
-
-    redirect_to closet_item_path
+    @closet = current_user.mycloset
+    redirect_to closet_path(@closet)
   end
 
   def new
