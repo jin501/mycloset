@@ -1,11 +1,12 @@
 Welcome to your closet, <%= current_user.email %>
 
 <br><br>
-MyCloset <%= link_to 'edit', edit_closet_path %> <%= link_to 'add item', new_item_path %>
+MyCloset <%= link_to 'add item', new_closet_item_path(@closet) %>
 
 <br><br>
 
-<% @closet.items.each do |item| %>
+<% @closet_items.each do |closet_item| %>
+  Type: <%= closet_item.item.name %> | Brand: <%= closet_item.item.designer %> | Quantity: <%= closet_item.qauntity %> <%= link_to 'edit', edit_closet_item_path(@closet, closet_item.item) %> | <%= link_to 'I wore this today' %>
+<br><br>
 
-Type: <%= item.name %> | Brand: <%= item.designer %> | <%= link_to 'edit', edit_item_path %> | <%= link_to 'I wore this today' %>
 <% end %>

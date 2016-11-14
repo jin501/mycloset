@@ -1,4 +1,4 @@
-<%= form_for @item do |item_form| %>
+<%= form_for @item, url: '/closets/:closet_id/items', method: 'post' do |item_form| %>
 
   Type: <%= item_form.text_field :name %> <br>
   Brand: <%= item_form.text_field :designer %> <br>

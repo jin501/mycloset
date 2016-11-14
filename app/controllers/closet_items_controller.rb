@@ -1,8 +1,5 @@
-class ItemsController < ApplicationController
+class ClosetItemsController < ApplicationController
   before_action :authenticate_user!
-
-  def index
-  end
 
   def edit
     @item = Item.find_by(id: params[:id])
@@ -25,8 +22,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
     @item.save
-    @closet = current_user.mycloset
-    redirect_to closet_item_path(@closet, @item)
+    redirect_to closet_item_path
   end
 
   def show

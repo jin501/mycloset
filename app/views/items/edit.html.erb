@@ -1,15 +1,17 @@
-Type: <%= @item.name  %><br>
-Brand: <%= @item.designer %>
-<br><br>
-
-<%= form_for @closet_item, url: update_item_path do |f| %>
-<%= f.hidden_field :item_id, value: @item.id %>
-  Last Worn: <%= f.text_field :last_worn %><br>
-  Status: <%= f.text_field :status %><br>
-  Quantity: <%= f.text_field :qauntity %><br>
-  Size: <%= f.text_field :size %><br>
-  Season: <%= f.text_field :season %><br>
-<%= f.submit %>
+<%= form_for @item do |f| %>
+  <%= f.hidden_field :name, value: @item.name %>
+  <%= f.hidden_field :designer, value: @item.designer %>
+  Type: <%= @item.name %> <br>
+  Brand: <%= @item.designer %> <br>
+  Upload image
+  <br>
+  <%= f.fields_for :closet_items_attributes do |closet_item| %>
+    Quantity: <%= closet_item.number_field :qauntity %><br>
+    Notes:  <%= closet_item.text_field :note %> <br>
+    Last Worn: <%= closet_item.text_field :last_worn %><br>
+    Status: <%= closet_item.text_field :status %><br>
+    Size: <%= closet_item.text_field :size %><br>
+    Season: <%= closet_item.text_field :season %><br>
+    <% end %>
+  <%= f.submit 'Update'%>
 <% end %>
-
-<%= link_to 'delete item', "/items/#{@item.id}/delete" %>

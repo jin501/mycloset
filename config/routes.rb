@@ -9,7 +9,7 @@ Rails.application.routes.draw do
    resources :items
   end
 
- patch '/items/:id' => 'items#update', as: :update_item
+ patch '/closets/:closet_id/items/:id' => 'items#update', as: :update_item
 
  root 'welcome#home'
 
