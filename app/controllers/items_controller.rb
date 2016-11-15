@@ -23,14 +23,23 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
-    @item.save
+    @item = Item.find_or_create_by(name: item_params[:name], designer: item_params[:designer])
+    @item.update(item_params)
     @closet = current_user.mycloset
     redirect_to closet_item_path(@closet, @item)
   end
 
   def show
+    @closet = current_user.mycloset
     @item = Item.find_by(id: params[:id])
+    @closet_item = ClosetItem.find_or_create_by(closet_id: params[:closet_id], item_id: params[:id])
+  end
+
+  def destroy
+    @closet = current_user.mycloset
+    @closet_item = ClosetItem.find_by(closet_id: params[:closet_id], item_id: params[:id])
+    @closet_item.delete
+    redirect_to closet_path(@closet)
   end
 
   private

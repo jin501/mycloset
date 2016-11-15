@@ -1,12 +1,45 @@
 <h1>Welcome to your closet, <%= current_user.email %></h1>
+<br>
+<b>MyCloset</b> <%= link_to 'add item', new_closet_item_path(@closet) %>
 
 <br><br>
-MyCloset <%= link_to 'add item', new_closet_item_path(@closet) %>
 
+
+<table id="myCloset" class="tablesorter">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Item</th>
+      <th>Brand</th>
+      <th>Quantity</th>
+      <th>Size</th>
+      <th>Season</th>
+      <th>Bought</th>
+      <th>Last worn</th>
+      <th>Status</th>
+      <th>Notes</th>
+      <th>Wore today?</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @closet_items.each do |closet_item| %>
+      <td><%= link_to closet_item.id %></td>
+      <td><%= closet_item.item.name %></td>
+      <td><%= closet_item.item.designer %></td>
+      <td><%= closet_item.qauntity %></td>
+      <td><%= closet_item.size %></td>
+      <td><%= closet_item.season %></td>
+      <td><%= closet_item.bought %></td>
+      <td><%= closet_item.last_worn %></td>
+      <td><%= closet_item.status %></td>
+      <td><%= closet_item.note %></td>
+      <td><%= link_to 'edit', edit_closet_item_path(@closet, closet_item.item) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+ <%= link_to 'I wore this today' %>
 <br><br>
-
-<% @closet_items.each do |closet_item| %>
-  Type: <%= closet_item.item.name %> | Brand: <%= closet_item.item.designer %> | Quantity: <%= closet_item.qauntity %> <%= link_to 'edit', edit_closet_item_path(@closet, closet_item.item) %> | <%= link_to 'I wore this today' %>
-<br><br>
-
-<% end %>

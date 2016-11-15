@@ -1,0 +1,22 @@
+<%= @item.designer %> - <%= @item.name %> <br>
+
+<br><br>
+image
+<br><br>
+<%= @closet_item.qauntity %><br>
+<%= @closet_item.size %><br>
+<%= @closet_item.season %><br>
+<%= @closet_item.bought %><br>
+<%= @closet_item.last_worn %><br>
+<%= @closet_item.status %><br>
+<%= @closet_item.note %><br>
+<br>
+Find similar items in other closets...
+<br><br>
+<% @item.closet_items.each do |closet_item| %>
+  <%= link_to closet_item.user.email, user_path(closet_item.user)%><br>
+  <%= closet_item.status %><br>
+  ----
+  <br>
+
+<% end %>
