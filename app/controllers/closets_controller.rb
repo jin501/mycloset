@@ -5,7 +5,7 @@ class ClosetsController < ApplicationController
   end
 
   def show
-    @closet = current_user.mycloset
+    @closet = Closet.find_by(id: params[:id])
     @closet_items = @closet.closet_items
   end
 

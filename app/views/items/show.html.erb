@@ -1,22 +1,30 @@
-<%= @item.designer %> - <%= @item.name %> <br>
+<h2> <%= @item.name %> by <%= @item.designer %> </h2> <br>
 
 <br><br>
 image
 <br><br>
-<%= @closet_item.qauntity %><br>
-<%= @closet_item.size %><br>
-<%= @closet_item.season %><br>
-<%= @closet_item.bought %><br>
-<%= @closet_item.last_worn %><br>
-<%= @closet_item.status %><br>
-<%= @closet_item.note %><br>
-<br>
+Quantity: <%= @closet_item.qauntity %><br>
+Size: <%= @closet_item.size %><br>
+Season: <%= @closet_item.season %><br>
+Bought: <%= @closet_item.bought %><br>
+Last Worn: <%= @closet_item.last_worn %><br>
+Status: <%= @closet_item.status %><br><br>
+<br><br>
+
+<b>Comments:</b> <%= link_to 'add', comment_item_path%> <br>
+<%if @closet_item.comment %>
+  <% @closet_item.comment.each do |comment| %>
+    <%= comment %>
+  <% end %>
+<% end %>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<br><br>
 Find similar items in other closets...
 <br><br>
 <% @item.closet_items.each do |closet_item| %>
   <%= link_to closet_item.user.email, user_path(closet_item.user)%><br>
   <%= closet_item.status %><br>
-  ----
+  ***
   <br>
 
 <% end %>

@@ -1,11 +1,33 @@
-<h1>Welcome to your closet, <%= current_user.email %></h1>
-<br>
-<b>MyCloset</b> <%= link_to 'add item', new_closet_item_path(@closet) %>
-
+<% if current_user == @closet.user %>
+  <h1>Welcome to your closet, <%= @closet.user.email %></h1>
+  <br>
+  <b>MyCloset</b> <%= link_to 'add item', new_closet_item_path(@closet) %>
+<% else %>
+  <h1> Welcome to <%= @closet.user.email %>'s closet </h1>
+  <% end %>
 <br><br>
 
+<head>
 
-<table id="myCloset" class="tablesorter">
+  <script type="text/javascript" src="/path/to/jquery-latest.js"></script>
+<script type="text/javascript" src="/path/to/jquery.tablesorter.js"></script>
+  <script>
+  $(document).ready(function()
+      {
+          $("#myTable").tablesorter();
+      }
+  );
+
+  $(document).ready(function()
+      {
+          $("#myTable").tablesorter( {sortList: [[0,0], [1,0]]} );
+      }
+  );
+      
+  </script>
+</head>
+
+<table style="width:100%" id="myCloset" class="tablesorter">
   <thead>
     <tr>
       <th>ID</th>
@@ -19,13 +41,14 @@
       <th>Status</th>
       <th>Notes</th>
       <th>Wore today?</th>
+
       <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <% @closet_items.each do |closet_item| %>
-      <td><%= link_to closet_item.id %></td>
+      <td><%= link_to closet_item.id, items_show_path %></td>
       <td><%= closet_item.item.name %></td>
       <td><%= closet_item.item.designer %></td>
       <td><%= closet_item.qauntity %></td>
@@ -35,11 +58,13 @@
       <td><%= closet_item.last_worn %></td>
       <td><%= closet_item.status %></td>
       <td><%= closet_item.note %></td>
+      <% if current_user == closet_item.user %>
       <td><%= link_to 'edit', edit_closet_item_path(@closet, closet_item.item) %></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
 </table>
 
- <%= link_to 'I wore this today' %>
+
 <br><br>

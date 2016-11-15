@@ -1,14 +1,35 @@
 <%= form_for @item, url: '/closets/:closet_id/items', method: 'post' do |item_form| %>
 
-  Type: <%= item_form.text_field :name %> <br>
-  Brand: <%= item_form.text_field :designer %> <br>
+  Type:
+  <select name="item[name]">
+    <% Item.all.each do |item| %>
+    <option value="<%= item.id %>"><%= item.name %> </option>
+    <%end%>
+  </select>
+  <%= item_form.text_field :name %>
+    <p class='error'><%= show_errors(@item, :name) %></p><br>
+
+  Brand:
+    <select name="item[designer]">
+      <% Item.all.each do |item| %>
+      <option value="<%= item.id %>"><%= item.designer %> </option>
+      <%end%>
+    </select>
+
+    <%= item_form.text_field :designer %>
+    <p><%= show_errors(@item, :designer) %></p><br>
   Upload image
 
   <br>
   <%= item_form.fields_for :closet_items do |closet_item| %>
     <%= closet_item.hidden_field :closet_id, value: @closet.id %>
     Quantity: <%= closet_item.number_field :qauntity %><br>
-    Notes:  <%= closet_item.text_field :note %> <br>
+    Size: <%= closet_item.text_field :size %><br>
+    Season: <%= closet_item.text_field :season %><br>
+    Bought: <%= closet_item.date_field :bought %><br>
+    Last Worn: <%= closet_item.date_field :last_worn %><br>
+    Status: <%= closet_item.text_field :status %><br>
+    Notes:  <%= closet_item.text_area :note %> <br>
 
       <% end %>
   <%= item_form.submit 'Create'%>

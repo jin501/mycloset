@@ -1,0 +1,6 @@
+<%= form_for @item, :url => {:action => "update", :id => @item} do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.hidden_field :closet_id, value: @closet.id %>
+  <%= f.hidden_field :closet_id, value: @item.id %>
+  <%= f.submit %>
+<% end %>
