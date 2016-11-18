@@ -3,5 +3,4 @@ class Closet < ApplicationRecord
   has_many :closet_items
   has_many :items, through: :closet_items
 
-  mount_uploader :image, ImageUploader
 end

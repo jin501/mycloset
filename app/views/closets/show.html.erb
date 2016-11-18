@@ -7,27 +7,8 @@
   <% end %>
 <br><br>
 
-<head>
 
-  <script type="text/javascript" src="/path/to/jquery-latest.js"></script>
-<script type="text/javascript" src="/path/to/jquery.tablesorter.js"></script>
-  <script>
-  $(document).ready(function()
-      {
-          $("#myTable").tablesorter();
-      }
-  );
-
-  $(document).ready(function()
-      {
-          $("#myTable").tablesorter( {sortList: [[0,0], [1,0]]} );
-      }
-  );
-      
-  </script>
-</head>
-
-<table style="width:100%" id="myCloset" class="tablesorter">
+<table style="width:100%" id="#myTable" class="tablesorter">
   <thead>
     <tr>
       <th>ID</th>
@@ -42,7 +23,7 @@
       <th>Notes</th>
       <th>Wore today?</th>
 
-      <th></th>
+      <!-- <th></th> -->
     </tr>
   </thead>
   <tbody>
@@ -58,9 +39,12 @@
       <td><%= closet_item.last_worn %></td>
       <td><%= closet_item.status %></td>
       <td><%= closet_item.note %></td>
-      <% if current_user == closet_item.user %>
-      <td><%= link_to 'edit', edit_closet_item_path(@closet, closet_item.item) %></td>
-      <% end %>
+
+      <td>
+        <% if current_user == closet_item.user %>
+          <%= link_to 'edit', edit_closet_item_path(@closet, closet_item.item) %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>

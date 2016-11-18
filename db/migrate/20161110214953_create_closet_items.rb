@@ -5,13 +5,14 @@ class CreateClosetItems < ActiveRecord::Migration[5.0]
       t.integer :item_id
       t.string :comment
       t.string :note
-      t.integer :qauntity
+      t.integer :quantity
       t.string :size
       t.datetime :last_worn
       t.string :status
       t.datetime :bought
       t.string :season
       t.integer :tag_id
+      t.string :image
 
       t.timestamps
     end

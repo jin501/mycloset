@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     @item = Item.find_or_create_by(name: item_params[:name], designer: item_params[:designer])
     @item.update(item_params)
     @closet = current_user.mycloset
@@ -74,7 +75,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :designer, :image, closet_items_attributes: [:closet_id, :item_id, :comment, :note, :qauntity, :note, :size, :last_worn, :status, :bought, :season])
+    params.require(:item).permit(:name, :designer, closet_items_attributes: [:closet_id, :item_id, :comment, :note, :qauntity, :note, :size, :last_worn, :status, :bought, :season, :image])
+    #name_id: []
   end
 
 end

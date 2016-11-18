@@ -7,11 +7,16 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates_uniqueness_of :name, :designer
 
+  # scope :jeans, lambda { where(name: 'Jeans') }
+  scope :most_recent, lambda { where(:updated_at,
+
   def closet_items_attributes=(attributes)
-    attributes.values.each do |attr|
-      self.closet_items.build(attr)
+    # if attriv[:name] !=
+      attributes.values.each do |attr|
+        self.closet_items.build(attr)
+      end
     end
+    # end
+    # uploader.store!(params[:item][:image])
+
   end
-
-
-end

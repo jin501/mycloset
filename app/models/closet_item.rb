@@ -5,4 +5,6 @@ class ClosetItem < ApplicationRecord
   has_one :user, through: :closet
   accepts_nested_attributes_for :closet
 
+  mount_uploader :image, ImageUploader
+
 end

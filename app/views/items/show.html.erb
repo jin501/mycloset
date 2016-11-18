@@ -1,7 +1,7 @@
 <h2> <%= @item.name %> by <%= @item.designer %> </h2> <br>
 
 <br><br>
-image
+
 <br><br>
 Quantity: <%= @closet_item.qauntity %><br>
 Size: <%= @closet_item.size %><br>
@@ -9,6 +9,7 @@ Season: <%= @closet_item.season %><br>
 Bought: <%= @closet_item.bought %><br>
 Last Worn: <%= @closet_item.last_worn %><br>
 Status: <%= @closet_item.status %><br><br>
+images: <%=image_tag @closet_item.image.url %>
 <br><br>
 
 <b>Comments:</b> <%= link_to 'add', comment_item_path%> <br>
